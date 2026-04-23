@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  OPML follow list — anchor accounts by archetype for the Solana founder brand playbook.
+  Importable into RSS readers and compatible X/Twitter follow-list tools.
+  Handles marked "VERIFY" are best-guesses from the v0 archetype research; re-verify periodically.
+  The skill populates a tailored per-founder OPML as part of the engagement playbook output.
+-->
+<opml version="2.0">
+  <head>
+    <title>Solana Founder Brand — Anchor Accounts</title>
+    <description>Anchor accounts organized by the 8 archetypes used in the solana-founder-brand skill.</description>
+    <dateCreated>2026-04-22T00:00:00Z</dateCreated>
+    <ownerName>solana-founder-brand skill</ownerName>
+  </head>
+  <body>
+    <outline text="Protocol Philosopher" title="Protocol Philosopher — first-principles, technical, infra">
+      <outline text="Anatoly Yakovenko (Solana)" type="link" url="https://x.com/aeyakovenko" description="Solana co-founder — canonical voice for this archetype" />
+      <outline text="Raj Gokal (Solana)" type="link" url="https://x.com/rajgokal" description="Solana co-founder — operator/philosopher crossover" />
+      <outline text="Armani Ferrante (Backpack/Anchor)" type="link" url="https://x.com/armaniferrante" description="Straddles Protocol Philosopher / Engineer Minimalist" />
+    </outline>
+    <outline text="Ecosystem Operator" title="Ecosystem Operator — stats-forward, evangelist, infra/tooling">
+      <outline text="Mert Mumtaz (Helius)" type="link" url="https://x.com/0xMert_" description="Ecosystem defender-in-chief, stats-forward threads" />
+      <outline text="Akshay BD (Superteam)" type="link" url="https://x.com/akshay_bd" description="Superteam India, founder-advice + ecosystem coordination" />
+    </outline>
+    <outline text="Engineer Minimalist" title="Engineer Minimalist — terse, reply-heavy, ship-focused">
+      <outline text="Armani Ferrante (Backpack/Anchor)" type="link" url="https://x.com/armaniferrante" description="Primary anchor for this voice on Solana" />
+      <outline text="Siong (Jupiter)" type="link" url="https://x.com/0xSiong" description="VERIFY handle — Jupiter engineering voice" />
+    </outline>
+    <outline text="Degen Builder Poet" title="Degen Builder Poet — culture-first, meme-literate, builder">
+      <outline text="Meow (Jupiter)" type="link" url="https://x.com/weremeow" description="VERIFY handle — Jupiter founder, meme-culture voice" />
+    </outline>
+    <outline text="Contrarian Trader" title="Contrarian Trader — narrative-setting, market-structure, counter-consensus">
+      <outline text="Ansem" type="link" url="https://x.com/blknoiz06" description="Not a founder but purest voice — adjacency target for trader-founders" />
+    </outline>
+    <outline text="Research Maximalist" title="Research Maximalist — thesis-first, framework-driven, long threads">
+      <outline text="Kyle Samani (Multicoin)" type="link" url="https://x.com/KyleSamani" description="Template for this voice in Solana research" />
+      <outline text="Tushar Jain (Multicoin)" type="link" url="https://x.com/TusharJain_" description="Multicoin partner, complementary research voice" />
+    </outline>
+    <outline text="Consumer Storyteller" title="Consumer Storyteller — narrative, user-first, warm">
+      <outline text="(Needs user-validated anchors — see solana-archetypes.md)" description="Candidates: Phantom, DRiP, Dialect, Solana Mobile founder accounts" />
+    </outline>
+    <outline text="Memetic Provocateur" title="Memetic Provocateur — cultural, narrative-setting, attention-dense">
+      <outline text="(Needs user-validated anchors — see solana-archetypes.md)" description="Candidates: cultural-Solana, memecoin launch platform founders" />
+    </outline>
+  </body>
+</opml>

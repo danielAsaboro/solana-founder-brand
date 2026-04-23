@@ -1,0 +1,27 @@
+{
+  "skill_name": "solana-founder-brand",
+  "description": "Test cases for the Solana Founder Brand Playbook skill. Each case picks a distinct archetype-space so we can judge whether the skill produces archetype-appropriate voice and ecosystem-specific advice, not generic content.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "defi-technical-engineer-minimalist",
+      "prompt": "I'm building a Solana orderbook DEX called Velocity. I'm a technical founder — Rust, came from high-frequency trading infra. My natural communication style is terse and analytical, occasionally sarcastic. I care about MEV, execution quality, and proving that orderbooks can compete with AMMs. I don't have an X handle yet — starting fresh. Please build me a founder personal brand playbook for X.",
+      "expected_output": "Archetype match: Engineer Minimalist (primary) × Protocol Philosopher (secondary). POV centered on orderbooks returning to Solana with MEV-resistance as the technical wedge. 10 example posts heavily short-takes, terse, no 🚀/🔥 emoji, no 'excited to announce' phrasing. Engagement tier points at real Solana technical accounts (aeyakovenko, armaniferrante, 0xMert_, derivatives-protocol founders). Content calendar heavy on short takes + ship updates.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "consumer-storyteller-music-crypto",
+      "prompt": "I'm Mira, building Dripfm — a Solana-native music streaming app where listeners earn royalty splits on tracks they discover first. My background is consumer product design at a music company; non-technical on the Solana side. Communication style: storyteller, warm, earnest. I care about consumer crypto, music industry economics, and paying the long tail. My X handle is @miraobi_demo (hypothetical — treat this as a new account with no posts yet). What should my founder brand playbook look like?",
+      "expected_output": "Archetype match: Consumer Storyteller (primary, no blend needed). POV centered on compensating listener-curators as the unlock for music. 10 posts heavy on user stories, release narratives, small-win screenshots. Warmer tone, rhetorical questions allowed (~1 in 5). Engagement tier points at consumer-app Solana founders (Phantom, DRiP, Dialect orbit) and music-industry accounts. Fewer thread structures than technical archetypes; more conversational rhythm.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "research-maximalist-contrarian-trader-blend",
+      "prompt": "I'm Danyal Rashid, launching Converge — a Solana perpetuals protocol with a novel funding-rate mechanism that separates directional from volatility risk for LPs. My background is 5 years of quant research at a crypto prop shop. Communication style: analytical, willing to make uncomfortable calls, writes long threads when the argument warrants. I care about market microstructure, derivatives design, and proving that most perp DEXs are underpaying one side of their LP base. Could you produce a founder brand playbook for me on X? I already have a handle: @danyal_converge. I don't have meaningful post history yet — just started the account.",
+      "expected_output": "Archetype match: Research Maximalist × Contrarian Trader (roughly 60/40). POV centered on LP risk decomposition — directional vs. volatility risk. 10 posts skew toward long threads and framework-driven posts, plus shorter counter-consensus takes. Tone analytical, precise, willing to retract publicly. Engagement tier points at Multicoin research voices (KyleSamani, TusharJain_), derivatives founders (Drift/Zeta/Marginfi orbit), and selective cross-chain researchers. No meme-style posts.",
+      "files": []
+    }
+  ]
+}

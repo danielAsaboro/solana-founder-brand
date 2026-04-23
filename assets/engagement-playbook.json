@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Machine-readable engagement playbook schema. The skill emits a populated instance of this shape alongside the markdown playbook so downstream tools (schedulers, analytics, agent chains) can consume it structurally. Fields in {{curly_braces}} are populated per founder.",
+  "founder": {
+    "name": "{{FOUNDER_NAME}}",
+    "handle": "{{FOUNDER_X_HANDLE}}",
+    "project_name": "{{PROJECT_NAME}}",
+    "project_handle": "{{PROJECT_X_HANDLE}}",
+    "archetype_primary": "{{PRIMARY_ARCHETYPE}}",
+    "archetype_secondary": "{{SECONDARY_ARCHETYPE_OR_NULL}}",
+    "archetype_blend_ratio": "{{BLEND_RATIO_OR_NULL}}"
+  },
+  "generated_at": "{{ISO_DATE}}",
+  "pov_one_liner": "{{UNIQUE_POV}}",
+  "content_pillars": [
+    {
+      "name": "{{PILLAR_1_NAME}}",
+      "weight_pct": 0,
+      "description": "{{PILLAR_1_DESCRIPTION}}",
+      "example_angles": ["{{ANGLE_1}}", "{{ANGLE_2}}", "{{ANGLE_3}}"]
+    },
+    {
+      "name": "{{PILLAR_2_NAME}}",
+      "weight_pct": 0,
+      "description": "{{PILLAR_2_DESCRIPTION}}",
+      "example_angles": ["{{ANGLE_1}}", "{{ANGLE_2}}"]
+    },
+    {
+      "name": "{{PILLAR_3_NAME}}",
+      "weight_pct": 0,
+      "description": "{{PILLAR_3_DESCRIPTION}}",
+      "example_angles": ["{{ANGLE_1}}", "{{ANGLE_2}}"]
+    }
+  ],
+  "writing_style": {
+    "tone": "{{TONE}}",
+    "sentence_structure": "{{SENTENCE_STRUCTURE}}",
+    "jargon_policy": "{{JARGON_POLICY}}",
+    "self_disclosure_level": "{{LOW|MEDIUM|HIGH}}",
+    "capitalization": "{{CAPITALIZATION}}",
+    "do": ["{{DO_1}}", "{{DO_2}}", "{{DO_3}}"],
+    "avoid": ["{{AVOID_1}}", "{{AVOID_2}}", "{{AVOID_3}}"]
+  },
+  "posting_rhythm": {
+    "posts_per_week_target": 0,
+    "mix_pct": {
+      "short_takes": 0,
+      "medium_threads": 0,
+      "long_threads": 0,
+      "quote_tweets": 0,
+      "replies": 0
+    },
+    "best_windows_et": ["{{WINDOW_1}}", "{{WINDOW_2}}"],
+    "day_of_week_pattern": {
+      "monday": "{{MONDAY_PATTERN}}",
+      "tuesday_to_thursday": "{{MIDWEEK_PATTERN}}",
+      "friday": "{{FRIDAY_PATTERN}}",
+      "saturday_sunday": "{{WEEKEND_PATTERN}}"
+    }
+  },
+  "engagement": {
+    "tier_1_handles": [
+      {
+        "handle": "{{HANDLE}}",
+        "reason": "{{ONE_LINE_REASON}}",
+        "reply_mode": "{{SUBSTANTIVE_ADD|FRIENDLY_COUNTER|RELATED_EXAMPLE|SHARPENING|QUESTION}}"
+      }
+    ],
+    "tier_2_handles": [
+      {
+        "handle": "{{HANDLE}}",
+        "reason": "{{ONE_LINE_REASON}}"
+      }
+    ],
+    "spaces_and_communities": [
+      { "name": "{{NAME}}", "type": "{{SPACE|PODCAST|COMMUNITY|SLACK|TELEGRAM|DISCORD}}", "cadence": "{{WEEKLY|MONTHLY|AD_HOC}}" }
+    ],
+    "insertion_tactics": ["{{TACTIC_1}}", "{{TACTIC_2}}", "{{TACTIC_3}}"]
+  },
+  "example_posts": [
+    {
+      "n": 1,
+      "structure": "{{STRUCTURE_CODE_FROM_POST_STRUCTURES_MD}}",
+      "pillar": "{{PILLAR_NAME}}",
+      "format": "{{SHORT_TAKE|MEDIUM_THREAD|LONG_THREAD|QUOTE_TWEET|REPLY}}",
+      "text": "{{THE_POST_TEXT}}",
+      "anti_slop_checked": true
+    }
+  ],
+  "content_calendar_csv_path": "{{POPULATED_CONTENT_CALENDAR_CSV_PATH}}",
+  "next_actions": [
+    "{{ACTION_1}}",
+    "{{ACTION_2}}",
+    "{{ACTION_3}}"
+  ],
+  "differentiation_note": "{{PERSONAL_VS_PROJECT_ACCOUNT_GUIDANCE}}"
+}
