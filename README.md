@@ -5,7 +5,7 @@ A personalized X/Twitter personal-brand playbook skill for Solana founders — g
 ## Install
 
 ```bash
-npx skills add <your-github>/solana-founder-brand
+npx skills add danielAsaboro/solana-founder-brand
 ```
 
 Works with Claude Code, Cursor, GitHub Copilot, Cline, and 15+ other agents.
@@ -35,14 +35,42 @@ Given a founder's profile, the skill:
 - A populated `content-calendar.csv` for the first 4 weeks
 - A named engagement playbook pointing at real Solana accounts
 
+## MCP server (optional — upgrades scripts to first-class tools)
+
+The `mcp/` directory contains an MCP server that exposes `fetch_x_posts`, `web_search`, and `analyze_voice` as native Claude Code tools instead of Bash subprocess calls.
+
+```bash
+cd mcp && npm install
+```
+
+Then register in your Claude Code project settings (`.claude/settings.json`):
+
+```json
+{
+  "mcpServers": {
+    "solana-founder-brand": {
+      "command": "node",
+      "args": ["./mcp/server.mjs"],
+      "env": {
+        "TWITTERAPI_IO_KEY": "your-key-here",
+        "TAVILY_API_KEY": "your-key-here"
+      }
+    }
+  }
+}
+```
+
+Without the MCP server the skill falls back to the `scripts/` equivalents automatically — no keys required, no setup needed.
+
 ## Optional: stronger voice grounding
 
-Set any of these env vars to enable richer fetching:
-- `TWITTER_API_BEARER` — X API v2 bearer token
-- `RAPIDAPI_KEY` — RapidAPI key for one of the supported Twitter endpoints
-- `TAVILY_API_KEY` / `SERPAPI_KEY` / `EXA_API_KEY` — stronger web search for founder background
+Set any of these env vars (in `.env` or in the MCP server config above) to enable richer fetching:
+- `TWITTERAPI_IO_KEY` — twitterapi.io (recommended X source, ~$0.15/1000 tweets)
+- `RAPIDAPI_KEY` — RapidAPI twitter-api45 (fallback X source)
+- `TAVILY_API_KEY` — Tavily search (recommended, 1000/mo free)
+- `EXA_API_KEY` / `SERPAPI_KEY` — web search fallbacks
 
-See `scripts/README.md` for details. Every script degrades gracefully — the skill always works without any keys.
+See `skills/solana-founder-brand/scripts/README.md` for details. Every tool degrades gracefully — the skill always works without any keys.
 
 ## License
 

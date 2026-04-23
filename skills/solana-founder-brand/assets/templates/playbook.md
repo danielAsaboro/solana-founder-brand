@@ -10,6 +10,26 @@
 
 ---
 
+## Community Layer
+
+### Follower identity
+
+**Proposed name:** {{FOLLOWER_IDENTITY_NAME}}
+
+Why this name: {{FOLLOWER_IDENTITY_RATIONALE_1_SENTENCE}}
+
+### Early community roles
+
+- **{{ROLE_1_NAME}}** — {{ROLE_1_DESCRIPTION}}
+- **{{ROLE_2_NAME}}** — {{ROLE_2_DESCRIPTION}}
+- **{{ROLE_3_NAME}}** — {{ROLE_3_DESCRIPTION}}
+
+### Economic ownership framing
+
+{{ECONOMIC_OWNERSHIP_1_2_SENTENCES}}
+
+---
+
 ## 1. Unique POV — the one perspective you should own on X
 
 **{{UNIQUE_POV_ONE_OR_TWO_SENTENCES}}**
@@ -36,12 +56,16 @@ Example angles:
 - {{PILLAR_1_ANGLE_2}}
 - {{PILLAR_1_ANGLE_3}}
 
+**Core CTA:** {{PILLAR_1_CORE_CTA}}
+
 ### Pillar 2 — {{PILLAR_2_NAME}} ({{PILLAR_2_WEIGHT}}%)
 {{PILLAR_2_DESCRIPTION_1_SENTENCE}}
 
 Example angles:
 - {{PILLAR_2_ANGLE_1}}
 - {{PILLAR_2_ANGLE_2}}
+
+**Core CTA:** {{PILLAR_2_CORE_CTA}}
 
 ### Pillar 3 — {{PILLAR_3_NAME}} ({{PILLAR_3_WEIGHT}}%)
 {{PILLAR_3_DESCRIPTION_1_SENTENCE}}
@@ -50,8 +74,12 @@ Example angles:
 - {{PILLAR_3_ANGLE_1}}
 - {{PILLAR_3_ANGLE_2}}
 
+**Core CTA:** {{PILLAR_3_CORE_CTA}}
+
 ### Pillar 4 (optional) — {{PILLAR_4_NAME}} ({{PILLAR_4_WEIGHT}}%)
 {{PILLAR_4_DESCRIPTION_1_SENTENCE}}
+
+**Core CTA:** {{PILLAR_4_CORE_CTA}}
 
 ---
 
@@ -103,6 +131,11 @@ Example angles:
 ---
 
 ## 5. Engagement playbook
+
+### Regional seeding — seed here first, before the main timeline
+
+- **{{REGIONAL_COMMUNITY_1}}** — {{REGIONAL_COMMUNITY_1_REASON}}
+- **{{REGIONAL_COMMUNITY_2}}** — {{REGIONAL_COMMUNITY_2_REASON}}
 
 ### Tier 1 — engage daily or every other day
 

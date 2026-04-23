@@ -1,0 +1,19 @@
+{
+  "name": "solana-founder-brand-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for the solana-founder-brand skill — fetch X posts, web search, and voice analysis as first-class Claude Code tools.",
+  "type": "module",
+  "bin": {
+    "solana-founder-brand-mcp": "./server.mjs"
+  },
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.2",
+    "zod": "^3.23.8"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

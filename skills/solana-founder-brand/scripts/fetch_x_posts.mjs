@@ -132,32 +132,33 @@ async function tryJinaReader(handle, count) {
     const r = await fetch(url, { headers: { accept: "text/plain" } });
     if (!r.ok) return { ok: false, source: "jina-reader", note: `HTTP ${r.status}` };
     const text = await r.text();
-    // Jina's proxy returns messy markdown-ish text; heuristically extract short paragraphs
-    // that look like posts (lines of 10-280 chars, not URLs, not @mentions-only).
-    const lines = text
-      .split(/\n+/)
-      .map((l) => l.trim())
-      .filter(
-        (l) =>
-          l.length >= 10 &&
-          l.length <= 280 &&
-          !/^https?:\/\//.test(l) &&
-          !/^@\w+$/.test(l) &&
-          !/^\d+$/.test(l) &&
-          !/^(Follow|Following|Followers|Posts|Replies)/i.test(l),
-      );
-    // Deduplicate
+    // Jina returns messy markdown from X's login-gated pages; filter aggressively.
+    // X now requires login to view profiles, so Jina often returns the login wall.
     const seen = new Set();
     const candidates = [];
-    for (const l of lines) {
-      if (!seen.has(l)) {
+    for (const raw of text.split(/\n+/)) {
+      const l = raw.trim();
+      if (
+        l.length >= 25 &&
+        l.length <= 280 &&
+        l.split(/\s+/).length >= 5 &&
+        !seen.has(l) &&
+        !/^https?:\/\//.test(l) &&
+        !/^\[.*\]\(https?:/.test(l) &&          // markdown links e.g. [Log in](https://...)
+        !/^@\w+$/.test(l) &&
+        !/^\d+$/.test(l) &&
+        !/^(Follow|Following|Followers|Posts|Replies|Likes|Media|Bookmarks)/i.test(l) &&
+        !/^(Title:|URL Source:|Markdown Content:|Published|Author:|Description:|Keywords:)/i.test(l) &&
+        !/^(Don't miss|People on X|Log in|Sign up|Sign in|Already have)/i.test(l) &&
+        !/^(Something went wrong|Try again|Learn more|Show more|Trending|What's happening)/i.test(l)
+      ) {
         seen.add(l);
         candidates.push(l);
       }
       if (candidates.length >= count) break;
     }
-    if (candidates.length < 3) {
-      return { ok: false, source: "jina-reader", note: "too few candidate lines parsed" };
+    if (candidates.length < 5) {
+      return { ok: false, source: "jina-reader", note: "too few real-post candidates — X login wall likely returned" };
     }
     return {
       ok: true,

@@ -18,7 +18,7 @@ Ask the user for any of these that are missing. Don't block on optional fields; 
 - **Background** — technical / non-technical / operator / researcher / trader / designer, prior projects or roles (required if you can get it)
 - **What they care about most** — DeFi / AI / consumer crypto / infra / privacy / MEV / governance / etc. (helpful for content pillars)
 - **Natural communication style** — casual / analytical / contrarian / storyteller / meme-fluent / minimalist (helpful for archetype match)
-- **Optional: their X handle** — if provided, the skill can fetch recent posts via `scripts/fetch_x_posts.mjs` for tighter voice matching
+- **Optional: their X handle** — if provided, the skill can fetch recent posts via the `fetch_x_posts` MCP tool (or `scripts/fetch_x_posts.mjs` as fallback) for tighter voice matching
 - **Optional: 5–10 pasted recent posts** — if the founder already has an account, pasting real posts is the strongest voice signal
 - **Optional: project/company X handle** — so the output can explicitly differentiate the personal voice from the project voice
 
@@ -39,13 +39,13 @@ The more real post data you have, the better the voice match. The primary path i
 In order of preference:
 
 1. **If the user pasted recent posts**, use them directly as primary voice-grounding examples. This is the best signal — real posts from the real founder.
-2. **If the user provided their X handle (and hasn't pasted)**, run `scripts/fetch_x_posts.mjs <handle>`. See `references/voice-grounding.md` for how the tiered fetcher works and what env vars enable stronger results. The script returns a JSON envelope; if `ok: true`, use the posts as grounding. If `ok: false` with `source: "paste-mode"`, ask the founder to paste posts instead.
-3. **Optional analysis pass:** pipe either pasted or fetched posts through `scripts/analyze_voice.mjs` to get a style fingerprint (sentence lengths, punctuation, capitalization, emoji density, reply ratio). Cross-check against the matched archetype's fingerprint in `solana-archetypes.md`. If the founder's actual voice diverges strongly from the archetype, note the divergence and adjust the style guide.
+2. **If the user provided their X handle (and hasn't pasted)**, call the `fetch_x_posts` MCP tool with `{handle}`. Falls back automatically through twitterapi.io → RapidAPI → Jina reader → paste-mode signal. If `ok: true`, use the posts as grounding. If `ok: false` with `source: "paste-mode"`, ask the founder to paste posts instead. (No MCP server? Run `scripts/fetch_x_posts.mjs <handle>` via Bash — same logic, same envelope.)
+3. **Optional analysis pass:** call the `analyze_voice` MCP tool with `{posts: [array of post strings]}` to get a style fingerprint (sentence lengths, punctuation, capitalization, emoji density, reply ratio). Cross-check against the matched archetype's fingerprint in `solana-archetypes.md`. If the founder's actual voice diverges strongly from the archetype, note the divergence and adjust the style guide. (No MCP? Pipe posts through `scripts/analyze_voice.mjs`.)
 4. **If no post data is available at all**, rely on the archetype's anchor-account post structures from `references/solana-archetypes.md` as your voice reference. Be explicit in the output that the voice match is archetype-only, not founder-grounded.
 
-For founder background enrichment, optionally run `scripts/web_search.mjs "<founder name> <project>"` to pull prior projects, talks, interviews — useful for discovering content pillars the founder may not have mentioned.
+For founder background enrichment, call the `web_search` MCP tool with `{query: "<founder name> <project>"}` to pull prior projects, talks, interviews — useful for discovering content pillars the founder may not have mentioned. (No MCP? Run `scripts/web_search.mjs "<query>"` via Bash.)
 
-If any script fails, do not block. Degrade one tier down the preference list and continue.
+If any tool or script call fails, do not block. Degrade one tier down the preference list and continue.
 
 ### Step 3. Derive the unique POV
 
@@ -56,12 +56,24 @@ Using the archetype's lens combined with what the founder is building and cares 
 - Anchored to what they're uniquely positioned to see — their build, their background, their ecosystem vantage point
 - One sentence, maybe two. Not a paragraph.
 
+### Step 3.5. Community layer
+
+Community identity is the delta between products that disappear after a hackathon and products that process $7M and raise their pre-seed. Define it early so every post can reinforce it.
+
+Produce:
+- **Follower identity name (1–2 options):** What will this founder's early users call themselves? Ground the name in the POV and product. Examples: "Falcons" (LBs), "Pajas" (Pass Cash), "Cadience" (Soflair). The name should feel like something the user would claim, not a brand label stamped on them.
+- **2–3 early community roles:** Titles the founder can assign to engaged users — e.g. "Beta Listener", "Discovery Ambassador", "Founding Curator". Roles create ownership; they should feel meaningful, not gamified.
+- **Economic ownership framing:** One or two sentences on how being early is materially valuable — not just emotional. What does an early user get that later users won't? (Access, allocation, feature input, credit, revenue share, co-design influence.)
+
+This output feeds the `## Community Layer` section in the playbook template.
+
 ### Step 4. Content pillars (3–4)
 
 Pick recurring topics the founder can post about consistently without running dry. Each pillar should have:
 - A one-line description
 - 2–3 example angles under it
 - A rough weekly post volume suggestion
+- **`core_cta`** — one line stating the action the post drives: "The post drives the reader to [action]." Example: `core_cta: "Try Dripfm as a curator"`. This is the single action that provides value to the startup. If you can't name the action, the pillar is too vague — sharpen it.
 
 Pull pillar patterns from the matched archetype's content mix in `references/solana-archetypes.md`.
 
@@ -86,7 +98,10 @@ Pull the archetype's cadence from `references/solana-archetypes.md` and adapt to
 
 ### Step 7. Engagement playbook
 
+**Before targeting Tier 1 X handles**, identify the 1–2 regional communities where this founder's target user base is already active. The first community post goes there, not on the main timeline. Local seeding converts faster than cold outreach to large handles. See the `## Regional seeding channels` section in `references/ecosystem-graph.md` for the channel list.
+
 Read `references/ecosystem-graph.md` for the named Solana X ecosystem. Produce:
+- **Regional seeding targets** — 1–2 specific Telegram groups, Discord servers, or Farcaster channels where the founder's first users are already gathered
 - **Tier 1 handles** — 5–10 high-signal accounts to reply to regularly (daily/every-other-day)
 - **Tier 2 handles** — 15–25 accounts to engage weekly
 - **Spaces / AMAs / communities** — recurring events this archetype should show up in
@@ -103,6 +118,7 @@ This is the hardest and most judged output. Generate exactly 10 posts that:
 - **Run through the anti-slop filter** in `references/anti-slop-rules.md` before returning any post. If a post contains a banned pattern, rewrite it.
 - Use **at least 6 different structures** from the selected archetype's set (variety within voice is what makes posts feel alive; monotony of structure reads as algorithmic)
 - Include at least 1 thread opener, 1 short take, 1 reply/engagement template, 1 values/POV post, 1 archetype-specific format natural to the matched archetype
+- Include **at least 1 community post structure** from the `## Community Post Structures` section in `references/post-structures.md` (Early Adopter Spotlight, Community Naming Moment, or Proof-of-Use) — these apply to all archetypes and are often the highest-repost posts in a founder's first 10
 
 **Read the right example before writing.** Before generating, read the worked example that matches the primary archetype:
 
@@ -128,6 +144,10 @@ Three artifacts go back to the founder. **Produce all three. This is a checklist
 
 **Before ending your turn, verify:**
 - [ ] The playbook markdown has been produced with every section filled in (no leftover `{{PLACEHOLDERS}}`).
+- [ ] The `## Community Layer` section has a follower identity name, 2–3 roles, and an economic ownership framing.
+- [ ] Each content pillar has a `core_cta` line.
+- [ ] The engagement playbook names at least 2 regional communities (not just X handles).
+- [ ] At least 1 of the 10 example posts uses a community post structure (C1/C2/C3 from `references/post-structures.md`).
 - [ ] The content-calendar CSV has been saved to a real path, with all 28 slot rows populated.
 - [ ] The engagement-playbook JSON has been produced and the `content_calendar_csv_path` field points at the saved CSV's path (not the template path).
 - [ ] No 🚀 / 🔥 / "excited to announce" appear in any example post (anti-slop pass per `references/anti-slop-rules.md`).
@@ -163,10 +183,15 @@ After returning the playbook, briefly mention:
 - `references/post-structures.md` — archetype-specific post templates
 - `references/voice-grounding.md` — how scripts + paste fallback work, env vars for stronger fetching
 
-**Scripts (invoke when needed):**
-- `scripts/fetch_x_posts.mjs <handle>` — tiered X post fetcher
-- `scripts/web_search.mjs "<query>"` — tiered web search for founder background
-- `scripts/analyze_voice.mjs` — style-fingerprint extractor (pipe posts JSON in)
+**MCP tools (preferred — call directly if the `solana-founder-brand` MCP server is running):**
+- `fetch_x_posts {handle, count?}` — tiered X post fetcher; returns JSON envelope
+- `web_search {query, max?}` — tiered web search for founder background
+- `analyze_voice {posts: string[]}` — local voice-style fingerprint; zero network
+
+**Scripts (fallback — use via Bash if MCP server is not configured):**
+- `scripts/fetch_x_posts.mjs <handle>` — same logic as `fetch_x_posts` tool
+- `scripts/web_search.mjs "<query>"` — same logic as `web_search` tool
+- `scripts/analyze_voice.mjs` — same logic as `analyze_voice` tool (pipe posts JSON in)
 
 **Assets (templates to populate + examples for few-shot grounding):**
 - `assets/templates/playbook.md` — the primary deliverable template

@@ -232,6 +232,39 @@
 
 ---
 
+## Community Post Structures (all archetypes)
+
+These three structures apply across all archetypes — Harri's insight that peer advocacy outperforms broadcast marketing holds whether the founder is an Engineer Minimalist or a Consumer Storyteller. Rotate them in at a ratio of roughly 1 per 10-post set.
+
+### C1. Early Adopter Spotlight
+
+Name one real early user. Describe concretely what they did with the product. State in one sentence why that matters.
+
+- **Shape:** "[User name or pseudonym] did [specific thing] with [product] this week. [One sentence on why that's significant — to the vision, the category, the user's own life]."
+- **Length:** 60–120 words. No hyperbole. Specificity is the signal.
+- **Note:** "real user" means a genuine interaction — a DM, a Discord message, a support ticket, a transaction. If you don't have one yet, wait. A fabricated spotlight loses trust permanently.
+- **Example frame:** "Marcus in Lagos sent me this DM last week. He used Dripfm to share three tracks with friends who don't have Spotify. They listened. That's the product working."
+
+### C2. Community Naming Moment
+
+Use this once — the first post that gives the community its identity name. High-repost signal because it invites users to claim the label.
+
+- **Shape:** "[We're calling our early users X from now on.] [One sentence on why — grounded in what those users do or believe, not just what you want them to be.] [If you're one of them, you'll know.]"
+- **Length:** 40–80 words. Understated tone. The naming is the event; don't oversell it.
+- **Use:** exactly once, never repeated. If the name changes, acknowledge it honestly.
+- **Example frame:** "We're calling early Dripfm users Curators. Not listeners. Not fans. Curators — because you're actively shaping what music surfaces on Solana, and that's different. If you've dropped a playlist this month, you're one."
+
+### C3. Proof-of-Use
+
+A screenshot or honest paraphrase of a real user message, DM, or transaction — with one sentence of context. The reader should feel the product working, not be told it works.
+
+- **Shape:** "[Paraphrase or screenshot of real user message.] [One sentence of context — who this person is, what they were trying to do, why it matters.]"
+- **Length:** caption 1–2 sentences if screenshot; 40–80 words if text-only.
+- **Anti-slop requirement:** do not editorialize with "this is why we build" or "moments like these." Let the user's words carry the weight. One clean sentence of context is enough.
+- **Example frame:** "Got a DM from someone who said they shared a Dripfm playlist at a family dinner and their cousin asked how to buy a track. First time I've heard crypto described as easy. That's what we're after."
+
+---
+
 ## Blending note
 
 When the founder is a blend (e.g. Engineer Minimalist × Degen Builder Poet 70/30):

@@ -198,6 +198,52 @@ Solana Twitter's most active audience is US-based. Default assumption:
 
 ---
 
+## Regional seeding channels
+
+> **Principle (Harri):** Build locally, scale globally. Every founder has an unfair advantage in the communities they already understand. Seed there first — the first cohort of real users comes from regional trust networks, not cold broadcasts to large X accounts.
+
+**Before writing a single tweet to a Tier 1 handle**, identify which of these communities already contains the founder's target user. Post there first. One engaged user from a regional Telegram is worth 50 impressions from a cold reply to a large account.
+
+### Superteam regional Telegrams
+
+Active regional groups with high founder-to-builder density. Founders should join the one(s) matching their own geography or their users' geography first.
+
+- **Superteam Nigeria** — West Africa's most active builder/founder Telegram; Harri (Nigeria lead) is an active connector. High signal for consumer-crypto, payments, cross-border products.
+- **Superteam India** — Largest Superteam regional by member count. Strong for DeFi, infrastructure, consumer apps.
+- **Superteam Vietnam** — Active gaming, NFT, and consumer-crypto community. Growing rapidly.
+- **Superteam Germany** — European DeFi and infrastructure builders; good for RegTech and payments projects.
+- **Superteam Brazil** — Strong for consumer crypto and remittances. Overlap with Latin America payments use cases.
+- **Superteam UAE** — High-net-worth builder concentration; relevant for trading, DeFi, and institutional-adjacent projects.
+
+Find current Telegram links via `superteam.fun` — they drift and the site is the canonical source.
+
+### Colosseum hackathon Discord
+
+- High-density founder conversations during and after each hackathon cycle.
+- Builders sharing WIPs, looking for users, giving feedback — ideal for early adopter seeding.
+- Find current invite at `colosseum.org`.
+
+### Farcaster Solana channels
+
+- `/solana` and `/build` channels on Farcaster: lower volume than X but higher signal-to-noise ratio.
+- Farcaster audience skews technical and crypto-native — good for early adopter seeding for infra and DeFi products.
+- Worth seeding here 1–2 weeks before the X launch for credibility compound.
+
+### Discord servers (by product category)
+
+- **Phantom Discord** — consumer wallet users; relevant for any consumer-crypto product that integrates with Phantom.
+- **Jupiter Discord** — DeFi traders and liquidity providers; relevant for DeFi and trading products.
+- **Tensor / Mad Lads Discord** — NFT and cultural community; relevant for consumer-cultural products.
+- **DRiP Discord** — music and content creator community; highly relevant for consumer media products.
+
+### How to use this in the engagement playbook
+
+1. Pick 1–2 regional communities that match the founder's geography AND product category (not just geography).
+2. The first substantial post about the product goes in that community — not on the main X timeline.
+3. Name these communities explicitly in the engagement playbook's "Regional seeding" section so the founder has a specific place to go on day one.
+
+---
+
 ## What the skill should NOT do with this file
 
 - Don't dump every handle into the engagement playbook. Pick 5–10 Tier 1 and 15–25 Tier 2 matched to the archetype.

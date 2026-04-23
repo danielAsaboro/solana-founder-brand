@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "solana-founder-brand": {
+      "command": "node",
+      "args": ["--env-file=.env", "./mcp/server.mjs"]
+    }
+  }
+}
